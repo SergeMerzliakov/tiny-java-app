@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.tinydemo'
+version '1.0'
+
+sourceCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClassName = 'org.tinydemo.Application'
+}
+
+dependencies {
+    compile "org.apache.logging.log4j:log4j-api:2.12.1"
+    compile "org.apache.logging.log4j:log4j-core:2.12.1"
+}
+
+task libs(type: Sync) {
+    from configurations.runtime
+    into "$buildDir/deplibs"
+}
